@@ -203,7 +203,7 @@
             <p class="chips"><span class="chip">App. A</span><span class="chip">App. E.2</span><span class="chip">App. E.3</span><span class="chip">Fig. 6</span></p>
           </div>
         </div>
-        <p class="blurb">A game state has 117 dimensions. Most hold a 3D position or a velocity. These clips draw the state on a plan view of the arena. A short trail follows each car. No model made these clips. Two sources appear here. The Rocket Science dataset (RoSc) holds the recordings. RoLeSynth is a rule-based engine, built with LLM assistance and fitted to those recordings. A match is configured by the fitted physics, four player profiles of 103 behaviour parameters each, and a team assignment. RoLeSynth simulates a 5-minute match in about 1.4 s on one CPU core, which is about 220 times real time. It does not take actions as input. It reads them off the motion of each tick, using the vocabulary of 19 binary actions from Rocket Science.</p>
+        <p class="blurb">A game state has 117 dimensions. Most hold a 3D position or a velocity. These clips draw the state on a plan view of the arena. A short trail follows each car. No model made these clips. Two sources appear here. The Rocket Science dataset (RoSc) holds the recordings. RoLeSynth is a rule-based engine, built with LLM assistance and fitted to Rocket Science. A match is configured by the fitted physics, four player profiles of 103 behaviour parameters each, and a team assignment. RoLeSynth simulates a 5-minute match in about 1.4 s on one CPU core, which is about 220 times real time. It does not take actions as input. It reads them off the motion of each tick, using the vocabulary of 19 binary actions from Rocket Science.</p>
         <div class="grid">
           <figure class="item">
             <video src="assets/states_01.mp4" controls loop muted playsinline preload="metadata"></video>
@@ -215,7 +215,7 @@
           </figure>
           <figure class="item">
             <video src="assets/states_03.mp4" controls loop muted playsinline preload="metadata"></video>
-            <figcaption><span class="lab">Figure 3:</span> SynthRoSc in a second match. Compare its habits against the recording above. <span class="ref">App. E.2</span></figcaption>
+            <figcaption><span class="lab">Figure 3:</span> SynthRoSc in a second match. Compare its habits against the Rocket Science clip above. <span class="ref">App. E.2</span></figcaption>
           </figure>
           <figure class="item">
             <video src="assets/states_04.mp4" controls loop muted playsinline preload="metadata"></video>
@@ -227,7 +227,7 @@
           </figure>
           <figure class="item">
             <video src="assets/states_06.mp4" controls loop muted playsinline preload="metadata"></video>
-            <figcaption><span class="lab">Figure 6:</span> The HOVER ability in RoLeSynth. The recorded game has no such action. <span class="ref">App. F.1</span></figcaption>
+            <figcaption><span class="lab">Figure 6:</span> The HOVER ability in RoLeSynth. Rocket Science contains no such action. <span class="ref">App. F.1</span></figcaption>
           </figure>
           <figure class="item">
             <video src="assets/states_07.mp4" controls loop muted playsinline preload="metadata"></video>
@@ -243,52 +243,52 @@
             <p class="chips"><span class="chip">Sec. 4.1</span><span class="chip">Table 2 (left)</span><span class="chip">App. C.3</span></p>
           </div>
         </div>
-        <p class="blurb">This row holds one clip. The reference is the recorded video. The four variants follow. All four read the same clip list with the same seed, so the comparison is like for like. RoPE on the ego car and the ball gives the largest gain. The camera follows the ego car and points at the ball, so these two entities set the view. In each divider below the left half is the recording and the right half is the model. Both halves show the same moment. The renderer receives the true state, so a model that follows it keeps the car and the ball in the same place as the recording. Where the halves stop lining up, the model has drifted away from the state it was given.</p>
+        <p class="blurb">This row holds one clip. The reference is the Rocket Science video. The four variants follow. All four read the same clip list with the same seed, so the comparison is like for like. RoPE on the ego car and the ball gives the largest gain. The camera follows the ego car and points at the ball, so these two entities set the view. In each divider below the left half is Rocket Science and the right half is the model. Both halves show the same moment. The renderer receives the true state, so a model that follows it keeps the car and the ball in the same place as the Rocket Science clip. Where the halves stop lining up, the model has drifted away from the state it was given.</p>
         <div class="tablewrap"><table><thead><tr><th>Neural renderer</th><th>gFID</th><th>gFDD</th><th>Drift</th><th>gPSNR</th></tr></thead><tbody><tr><td>No RoPE</td><td>6.39</td><td>0.241</td><td>0.062</td><td>21.10</td></tr><tr><td>Ego car</td><td>6.41</td><td>0.236</td><td>0.062</td><td>21.51</td></tr><tr><td>Ego car + ball</td><td>6.31</td><td>0.232</td><td>0.045</td><td>23.07</td></tr><tr><td>All cars + ball</td><td>6.31</td><td>0.234</td><td>0.045</td><td>23.08</td></tr></tbody></table></div>
         <div class="grid">
         <figure class="item wide">
           <div class="cmp" style="--x:50%">
             <video class="base" src="assets/compare_ab1b.mp4" muted loop playsinline preload="metadata"></video>
             <video class="over" src="assets/compare_ab1a.mp4" muted playsinline preload="metadata"></video>
-            <span class="lbl left">Recording</span>
+            <span class="lbl left">Rocket Science</span>
             <span class="lbl right">No spatial encoding of state</span>
             <div class="bar"></div>
           </div>
-          <figcaption><span class="lab">Figure 13:</span> No spatial encoding of state. Drift 0.062, gPSNR 21.10. Watch the halves separate as the rollout runs. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+          <figcaption><span class="lab">Figure 13:</span> No spatial encoding of state. Drift 0.062, gPSNR 21.10. Watch the halves separate as the rollout runs. Left half is Rocket Science, right half is the model. Drag the divider. Click to play or pause.</figcaption>
         </figure>
         <figure class="item wide">
           <div class="cmp" style="--x:50%">
             <video class="base" src="assets/compare_ab2b.mp4" muted loop playsinline preload="metadata"></video>
             <video class="over" src="assets/compare_ab2a.mp4" muted playsinline preload="metadata"></video>
-            <span class="lbl left">Recording</span>
+            <span class="lbl left">Rocket Science</span>
             <span class="lbl right">Ego car encoded spatially</span>
             <div class="bar"></div>
           </div>
-          <figcaption><span class="lab">Figure 14:</span> Ego car encoded spatially. Drift 0.062, gPSNR 21.51. The ball is still not encoded. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+          <figcaption><span class="lab">Figure 14:</span> Ego car encoded spatially. Drift 0.062, gPSNR 21.51. The ball is still not encoded. Left half is Rocket Science, right half is the model. Drag the divider. Click to play or pause.</figcaption>
         </figure>
         <figure class="item wide">
           <div class="cmp" style="--x:50%">
             <video class="base" src="assets/compare_ab3b.mp4" muted loop playsinline preload="metadata"></video>
             <video class="over" src="assets/compare_ab3a.mp4" muted playsinline preload="metadata"></video>
-            <span class="lbl left">Recording</span>
+            <span class="lbl left">Rocket Science</span>
             <span class="lbl right">Ego car and ball</span>
             <div class="bar"></div>
           </div>
-          <figcaption><span class="lab">Figure 15:</span> Ego car and ball. Drift 0.045, gPSNR 23.07. The halves stay together for longest. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+          <figcaption><span class="lab">Figure 15:</span> Ego car and ball. Drift 0.045, gPSNR 23.07. The halves stay together for longest. Left half is Rocket Science, right half is the model. Drag the divider. Click to play or pause.</figcaption>
         </figure>
         <figure class="item wide">
           <div class="cmp" style="--x:50%">
             <video class="base" src="assets/compare_ab4b.mp4" muted loop playsinline preload="metadata"></video>
             <video class="over" src="assets/compare_ab4a.mp4" muted playsinline preload="metadata"></video>
-            <span class="lbl left">Recording</span>
+            <span class="lbl left">Rocket Science</span>
             <span class="lbl right">All cars and ball</span>
             <div class="bar"></div>
           </div>
-          <figcaption><span class="lab">Figure 16:</span> All cars and ball. Drift 0.045, gPSNR 23.08. Adding the other three cars changes almost nothing. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+          <figcaption><span class="lab">Figure 16:</span> All cars and ball. Drift 0.045, gPSNR 23.08. Adding the other three cars changes almost nothing. Left half is Rocket Science, right half is the model. Drag the divider. Click to play or pause.</figcaption>
         </figure>
           <figure class="item">
             <video src="assets/compare_01.mp4" controls loop muted playsinline preload="metadata"></video>
-            <figcaption><span class="lab">Figure 8:</span> Reference. The recorded video for this clip.</figcaption>
+            <figcaption><span class="lab">Figure 8:</span> Reference. The Rocket Science video for this clip.</figcaption>
           </figure>
           <figure class="item">
             <video src="assets/compare_02.mp4" controls loop muted playsinline preload="metadata"></video>
@@ -340,7 +340,7 @@
           </figure>
           <figure class="item wide">
             <video src="assets/dual_06.mp4" controls loop muted playsinline preload="metadata"></video>
-            <figcaption><span class="lab">Figure 22:</span> The recorded video under the same actions, for comparison.</figcaption>
+            <figcaption><span class="lab">Figure 22:</span> The Rocket Science video under the same actions, for comparison.</figcaption>
           </figure>
         </div>
       </section>
@@ -388,7 +388,7 @@
             <p class="chips"><span class="chip">App. F.1</span><span class="chip">App. E.3</span><span class="chip">Sec. 4.3</span></p>
           </div>
         </div>
-        <p class="blurb">MAGNET and HOVER are two new actions. The Rocket Science recordings contain neither. RoLeSynth adds them as short plug-in rules, as two new actions beside the 19 binary actions of Rocket Science. MAGNET pulls the ball toward the car for 1 s. HOVER holds the car at a fixed altitude for a few seconds. A new ability takes three small files in RoLeSynth, against 11 to 12 files in RocketSim. In each clip the generated video is on the left and the state view is on the right. Read the state view like this. Each car is a triangle pointing the way it faces, blue for one team and orange for the other. The ball is the white circle. A purple ring around a car means one of its ability fields is active, so a ringed car is using MAGNET or HOVER at that moment. The panel on the far right lists each car, its boost level, and its ability fields in purple, for example IS_USING_MAGNET, MAGNET_COOLDOWN and MAGNET_TIME. The strip along the bottom is a side view of the arena, which is where HOVER is easiest to see.</p>
+        <p class="blurb">MAGNET and HOVER are two new actions. Rocket Science contains neither. RoLeSynth adds them as short plug-in rules, as two new actions beside the 19 binary actions of Rocket Science. MAGNET pulls the ball toward the car for 1 s. HOVER holds the car at a fixed altitude for a few seconds. A new ability takes three small files in RoLeSynth, against 11 to 12 files in RocketSim. In each clip the generated video is on the left and the state view is on the right. Read the state view like this. Each car is a triangle pointing the way it faces, blue for one team and orange for the other. The ball is the white circle. A purple ring around a car means one of its ability fields is active, so a ringed car is using MAGNET or HOVER at that moment. The panel on the far right lists each car, its boost level, and its ability fields in purple, for example IS_USING_MAGNET, MAGNET_COOLDOWN and MAGNET_TIME. The strip along the bottom is a side view of the arena, which is where HOVER is easiest to see.</p>
         <div class="grid">
           <figure class="item wide">
             <video src="assets/novel_01.mp4" controls loop muted playsinline preload="metadata"></video>
