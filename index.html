@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Pixels - Video samples</title>
+<meta name="description" content="Video samples accompanying a paper on grounding video world models with state-centric information.">
+<style>
+  /* The font is served from this repository, not from a font CDN. A hosted font makes every
+     visitor's browser announce itself, with their address and this page's URL, to a third
+     party. For a double-blind submission that is a visitor log nobody asked for. Nunito is a
+     variable font, so one file covers every weight used here. */
+  @font-face {
+    font-family: "Nunito";
+    src: url("assets/fonts/nunito.woff2") format("woff2");
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    color-scheme: light;
+    --matcha-900:#2f4025; --matcha-700:#5a7a44; --matcha-500:#7fa459;
+    --matcha-300:#b7cf99; --matcha-100:#dfecc9; --matcha-50:#eef5e2;
+    --cocoa-900:#2e1f16;  --cocoa-700:#4a3326;  --cocoa-500:#6f4e37;
+    --cocoa-300:#a9836a;  --cocoa-100:#e6d5c6;  --cocoa-50:#f4ebe2;
+    --cream:#fbf8f2; --card:#fffefb;
+    --fg:var(--cocoa-700); --fg-soft:#7b6455;
+    --shadow:0 4px 14px rgba(46,31,22,.08);
+    --shadow-lg:0 14px 32px rgba(46,31,22,.16);
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; scroll-padding-top:18px; }
+  body {
+    margin:0; font-family:Nunito,ui-rounded,"Segoe UI",system-ui,sans-serif;
+    font-size:16.5px; line-height:1.62; color:var(--fg);
+    background:
+      radial-gradient(820px 380px at 6% -4%, var(--matcha-100) 0%, transparent 58%),
+      radial-gradient(700px 340px at 97% 4%, var(--cocoa-100) 0%, transparent 56%),
+      var(--cream);
+    background-attachment:fixed;
+  }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px 96px; }
+
+  header {
+    margin:34px 0 0; padding:38px 0 26px;
+    border-bottom:3px solid var(--matcha-500);
+  }
+  h1 {
+    font-size:clamp(26px,3.6vw,38px); font-weight:800; margin:0 0 16px;
+    line-height:1.22; letter-spacing:-.4px; color:var(--cocoa-900);
+  }
+  .cars { font-size:21px; letter-spacing:7px; margin:0 0 10px; }
+  header p.lede { color:var(--fg-soft); margin:0; font-size:16.5px; }
+  .meta {
+    margin:16px 0 0; font-family:var(--mono); font-size:12.5px; color:var(--fg-soft);
+    letter-spacing:.2px;
+  }
+
+  .toc {
+    background:var(--card); border:1px solid var(--cocoa-100); border-radius:16px;
+    padding:20px 24px; margin:26px 0 0; box-shadow:var(--shadow);
+  }
+  .toc h2 {
+    font-size:12.5px; text-transform:uppercase; letter-spacing:.14em; color:var(--fg-soft);
+    margin:0 0 12px; font-weight:800;
+  }
+  .toc ol { list-style:none; margin:0; padding:0; }
+  .toc li { border-top:1px solid var(--matcha-50); }
+  .toc li:first-child { border-top:0; }
+  .toc a {
+    display:flex; align-items:baseline; gap:12px; padding:9px 4px; text-decoration:none;
+    color:var(--cocoa-700);
+  }
+  .toc a:hover { color:var(--matcha-700); }
+  .c-num {
+    font-family:var(--mono); font-size:12px; color:#fff; background:var(--matcha-500);
+    border-radius:5px; padding:1px 7px; flex:0 0 auto;
+  }
+  .c-title { font-weight:700; }
+  .c-ref { margin-left:auto; font-family:var(--mono); font-size:12px; color:var(--fg-soft); }
+
+  section {
+    background:var(--card); border:1px solid var(--cocoa-100); border-radius:18px;
+    padding:28px 30px 28px; margin:26px 0; box-shadow:var(--shadow);
+    border-left:8px solid var(--matcha-500);
+  }
+  section:nth-of-type(even) { border-left-color:var(--cocoa-500); }
+  .sec-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:12px; }
+  .num {
+    flex:0 0 auto; width:32px; height:32px; border-radius:9px; background:var(--matcha-500);
+    color:#fff; font-size:16px; font-weight:800; font-family:var(--mono);
+    display:inline-flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+  section:nth-of-type(even) .num { background:var(--cocoa-500); }
+  h2 { font-size:clamp(20px,2.7vw,26px); font-weight:800; margin:0; color:var(--cocoa-900); }
+  .chips { margin:7px 0 0; display:flex; flex-wrap:wrap; gap:6px; }
+  .chip {
+    font-family:var(--mono); font-size:11.5px; font-weight:600; letter-spacing:.2px;
+    padding:3px 9px; border-radius:6px; background:var(--matcha-50);
+    color:var(--matcha-900); border:1px solid var(--matcha-300);
+  }
+  section:nth-of-type(even) .chip {
+    background:var(--cocoa-50); color:var(--cocoa-900); border-color:var(--cocoa-300);
+  }
+  .blurb { color:var(--fg-soft); margin:0 0 22px; }
+
+  .tablewrap { overflow-x:auto; margin:0 0 24px; }
+  table { border-collapse:collapse; font-size:14px; font-family:var(--mono); min-width:420px; }
+  thead th {
+    background:var(--matcha-700); color:#fff; font-weight:700; text-align:left;
+    padding:8px 15px; white-space:nowrap;
+  }
+  thead th:first-child { border-top-left-radius:9px; }
+  thead th:last-child { border-top-right-radius:9px; }
+  tbody td { padding:7px 15px; border-bottom:1px solid var(--matcha-100); background:var(--matcha-50); }
+  tbody tr:nth-child(even) td { background:#fff; }
+
+  /* A/B divider: the base video is the right-hand model, the overlay is clipped to --x. */
+  .cmp {
+    position:relative; overflow:hidden; border-radius:11px; cursor:ew-resize;
+    border:2px solid var(--cocoa-100); box-shadow:var(--shadow); background:var(--cocoa-100);
+    touch-action:none; user-select:none;
+  }
+  .cmp video { display:block; width:100%; height:auto; border:0; border-radius:0; box-shadow:none; }
+  .cmp video:hover { transform:none; box-shadow:none; }
+  .cmp .over {
+    position:absolute; inset:0; width:100%; height:100%;
+    clip-path:inset(0 calc(100% - var(--x)) 0 0);
+  }
+  .cmp .bar {
+    position:absolute; top:0; bottom:0; left:var(--x); width:2px; background:#fff;
+    box-shadow:0 0 0 1px rgba(46,31,22,.35); pointer-events:none;
+  }
+  .cmp .bar::after {
+    content:""; position:absolute; top:50%; left:50%; width:30px; height:30px;
+    transform:translate(-50%,-50%); border-radius:50%; background:#fff;
+    box-shadow:0 2px 8px rgba(46,31,22,.4);
+  }
+  .cmp .lbl {
+    position:absolute; bottom:10px; font-family:var(--mono); font-size:11.5px; font-weight:600;
+    color:#fff; background:rgba(46,31,22,.72); padding:3px 9px; border-radius:6px;
+    pointer-events:none; max-width:44%;
+  }
+  .cmp .lbl.left { left:10px; }
+  .cmp .lbl.right { right:10px; }
+  .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; }
+  figure { margin:0; }
+  figure.wide { grid-column:1 / -1; }
+  video, img {
+    width:100%; height:auto; display:block; background:var(--cocoa-100);
+    border-radius:11px; border:2px solid var(--matcha-100); box-shadow:var(--shadow);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  video:hover, img:hover {
+    transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:var(--matcha-500);
+  }
+  section:nth-of-type(even) video, section:nth-of-type(even) img { border-color:var(--cocoa-100); }
+  section:nth-of-type(even) video:hover, section:nth-of-type(even) img:hover { border-color:var(--cocoa-500); }
+  figcaption { color:var(--fg-soft); font-size:14px; margin-top:9px; padding:0 2px; }
+  figcaption { font-size:14.5px; line-height:1.55; }
+  .lab { font-weight:800; color:var(--cocoa-900); }
+  .ref {
+    font-family:var(--mono); font-size:11.5px; color:var(--fg-soft);
+    border:1px solid var(--cocoa-100); border-radius:5px; padding:1px 6px; white-space:nowrap;
+  }
+
+  @media (max-width:560px) {
+    .grid { grid-template-columns:1fr; }
+    section { padding:22px 18px; }
+    header { padding:34px 22px 30px; }
+    .c-ref { display:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="cars">&#128663; &#127950; &#128665;</div>
+      <h1>Beyond Pixels: Grounding Video World Models with State-Centric Information</h1>
+      <p class="lede">Video samples that accompany the paper. Each row names the paper section,
+      table or figure it illustrates. Every clip is model output unless its caption says
+      otherwise.</p>
+      <p class="meta">Anonymous submission</p>
+    </header>
+
+    <nav class="toc">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#states"><span class="c-num">1</span><span class="c-title">Game state and data generation</span><span class="c-ref">App. A &middot; App. E.2 &middot; App. E.3 &middot; Fig. 6</span></a></li>
+        <li><a href="#compare"><span class="c-num">2</span><span class="c-title">State encoding ablation</span><span class="c-ref">Sec. 4.1 &middot; Table 2 (left) &middot; App. C.3</span></a></li>
+        <li><a href="#dual"><span class="c-num">3</span><span class="c-title">Dual-stream world model</span><span class="c-ref">Sec. 3.2 &middot; Fig. 2</span></a></li>
+        <li><a href="#uncertainty"><span class="c-num">4</span><span class="c-title">Uncertainty over hidden state</span><span class="c-ref">Sec. 4.3 &middot; Fig. 5 &middot; App. H</span></a></li>
+        <li><a href="#novel"><span class="c-num">5</span><span class="c-title">Novel actions</span><span class="c-ref">App. F.1 &middot; App. E.3 &middot; Sec. 4.3</span></a></li>
+      </ol>
+    </nav>
+
+      <section id="states">
+        <div class="sec-head">
+          <span class="num">1</span>
+          <div>
+            <h2>Game state and data generation</h2>
+            <p class="chips"><span class="chip">App. A</span><span class="chip">App. E.2</span><span class="chip">App. E.3</span><span class="chip">Fig. 6</span></p>
+          </div>
+        </div>
+        <p class="blurb">A game state has 117 dimensions. Most hold a 3D position or a velocity. These clips draw the state on a plan view of the arena. A short trail follows each car. No model made these clips. Two sources appear here. The Rocket Science dataset (RoSc) holds the recordings. RoLeSynth is a rule-based engine, built with LLM assistance and fitted to those recordings. A match is configured by the fitted physics, four player profiles of 103 behaviour parameters each, and a team assignment. RoLeSynth simulates a 5-minute match in about 1.4 s on one CPU core, which is about 220 times real time. It does not take actions as input. It reads them off the motion of each tick, using the vocabulary of 19 binary actions from Rocket Science.</p>
+        <div class="grid">
+          <figure class="item">
+            <video src="assets/states_01.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 1:</span> Recorded play from the Rocket Science dataset. <span class="ref">App. A</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_02.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 2:</span> RoLeSynth with the SynthRoSc profile. It is calibrated to mimic the policy of the Rocket Science dataset. <span class="ref">App. E.2</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_03.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 3:</span> SynthRoSc in a second match. Compare its habits against the recording above. <span class="ref">App. E.2</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_04.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 4:</span> SynthZoo. It samples 35 strategy parameters for every car at every match, so each player is unique. <span class="ref">App. E.3</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_05.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 5:</span> A second sample from SynthZoo. This version also varies steering flicker, coasting and boost use. <span class="ref">App. E.3</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_06.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 6:</span> The HOVER ability in RoLeSynth. The recorded game has no such action. <span class="ref">App. F.1</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/states_07.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 7:</span> The MAGNET ability in RoLeSynth. It pulls the ball toward the car for 1 s. <span class="ref">App. F.1</span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="compare">
+        <div class="sec-head">
+          <span class="num">2</span>
+          <div>
+            <h2>State encoding ablation</h2>
+            <p class="chips"><span class="chip">Sec. 4.1</span><span class="chip">Table 2 (left)</span><span class="chip">App. C.3</span></p>
+          </div>
+        </div>
+        <p class="blurb">This row holds one clip. The reference is the recorded video. The four variants follow. All four read the same clip list with the same seed, so the comparison is like for like. RoPE on the ego car and the ball gives the largest gain. The camera follows the ego car and points at the ball, so these two entities set the view. In each divider below the left half is the recording and the right half is the model. Both halves show the same moment. The renderer receives the true state, so a model that follows it keeps the car and the ball in the same place as the recording. Where the halves stop lining up, the model has drifted away from the state it was given.</p>
+        <div class="tablewrap"><table><thead><tr><th>Neural renderer</th><th>gFID</th><th>gFDD</th><th>Drift</th><th>gPSNR</th></tr></thead><tbody><tr><td>No RoPE</td><td>6.39</td><td>0.241</td><td>0.062</td><td>21.10</td></tr><tr><td>Ego car</td><td>6.41</td><td>0.236</td><td>0.062</td><td>21.51</td></tr><tr><td>Ego car + ball</td><td>6.31</td><td>0.232</td><td>0.045</td><td>23.07</td></tr><tr><td>All cars + ball</td><td>6.31</td><td>0.234</td><td>0.045</td><td>23.08</td></tr></tbody></table></div>
+        <div class="grid">
+        <figure class="item wide">
+          <div class="cmp" style="--x:50%">
+            <video class="base" src="assets/compare_ab1b.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="over" src="assets/compare_ab1a.mp4" muted playsinline preload="metadata"></video>
+            <span class="lbl left">Recording</span>
+            <span class="lbl right">No spatial encoding of state</span>
+            <div class="bar"></div>
+          </div>
+          <figcaption><span class="lab">Figure 13:</span> No spatial encoding of state. Drift 0.062, gPSNR 21.10. Watch the halves separate as the rollout runs. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+        </figure>
+        <figure class="item wide">
+          <div class="cmp" style="--x:50%">
+            <video class="base" src="assets/compare_ab2b.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="over" src="assets/compare_ab2a.mp4" muted playsinline preload="metadata"></video>
+            <span class="lbl left">Recording</span>
+            <span class="lbl right">Ego car encoded spatially</span>
+            <div class="bar"></div>
+          </div>
+          <figcaption><span class="lab">Figure 14:</span> Ego car encoded spatially. Drift 0.062, gPSNR 21.51. The ball is still not encoded. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+        </figure>
+        <figure class="item wide">
+          <div class="cmp" style="--x:50%">
+            <video class="base" src="assets/compare_ab3b.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="over" src="assets/compare_ab3a.mp4" muted playsinline preload="metadata"></video>
+            <span class="lbl left">Recording</span>
+            <span class="lbl right">Ego car and ball</span>
+            <div class="bar"></div>
+          </div>
+          <figcaption><span class="lab">Figure 15:</span> Ego car and ball. Drift 0.045, gPSNR 23.07. The halves stay together for longest. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+        </figure>
+        <figure class="item wide">
+          <div class="cmp" style="--x:50%">
+            <video class="base" src="assets/compare_ab4b.mp4" muted loop playsinline preload="metadata"></video>
+            <video class="over" src="assets/compare_ab4a.mp4" muted playsinline preload="metadata"></video>
+            <span class="lbl left">Recording</span>
+            <span class="lbl right">All cars and ball</span>
+            <div class="bar"></div>
+          </div>
+          <figcaption><span class="lab">Figure 16:</span> All cars and ball. Drift 0.045, gPSNR 23.08. Adding the other three cars changes almost nothing. Left half is the recording, right half is the model. Drag the divider. Click to play or pause.</figcaption>
+        </figure>
+          <figure class="item">
+            <video src="assets/compare_01.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 8:</span> Reference. The recorded video for this clip.</figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/compare_02.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 9:</span> No spatial encoding of state. gFID 6.39, gFDD 0.241, drift 0.062, gPSNR 21.10.</figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/compare_03.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 10:</span> Ego car encoded spatially. gFID 6.41, gFDD 0.236, drift 0.062, gPSNR 21.51.</figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/compare_04.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 11:</span> Ego car and ball. gFID 6.31, gFDD 0.232, drift 0.045, gPSNR 23.07.</figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/compare_05.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 12:</span> All cars and ball. gFID 6.31, gFDD 0.234, drift 0.045, gPSNR 23.08.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="dual">
+        <div class="sec-head">
+          <span class="num">3</span>
+          <div>
+            <h2>Dual-stream world model</h2>
+            <p class="chips"><span class="chip">Sec. 3.2</span><span class="chip">Fig. 2</span></p>
+          </div>
+        </div>
+        <p class="blurb">DSWM denoises the state stream and the video stream together. It receives no state as input here. It receives the actions. It generates the state and the video at the same time. In the side-by-side clips the video is on the left and the state the model generated is on the right. That state is model output. It was not given to the model. The overlay shows the actions for each frame. The wheel shows the steering direction. The lights show jump and boost.</p>
+        <div class="grid">
+          <figure class="item wide">
+            <video src="assets/dual_01.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 17:</span> Generated video on the left. The state the model generated at the same time on the right. Neither was given. <span class="ref">Sec. 3.2</span></figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/dual_02.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 18:</span> A second clip. Watch the generated state and the generated video agree, or fail to.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/dual_03.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 19:</span> A third clip.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/dual_04.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 20:</span> A fourth clip.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/dual_05.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 21:</span> Generated from the actions alone, with the action overlay on top.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/dual_06.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 22:</span> The recorded video under the same actions, for comparison.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="uncertainty">
+        <div class="sec-head">
+          <span class="num">4</span>
+          <div>
+            <h2>Uncertainty over hidden state</h2>
+            <p class="chips"><span class="chip">Sec. 4.3</span><span class="chip">Fig. 5</span><span class="chip">App. H</span></p>
+          </div>
+        </div>
+        <p class="blurb">DSWM draws its flow-matching noise for each stream independently. This permits a third inference mode. Teacher-force the video, then predict the state. Ten samples from one video give a confidence estimate for each state dimension. The spread is about 35 times wider for cars the camera does not show. The ratio of error to spread is 0.96 to 1.10 for controlled, visible and hidden cars alike. In each clip the state view is above and the video is below. Every faint marker is one of the ten samples.</p>
+        <div class="grid">
+          <figure class="item">
+            <video src="assets/uncertainty_01.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 23:</span> Ten sampled state rollouts from one teacher-forced video. The samples agree on the ego car and disagree on the cars off screen. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/uncertainty_02.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 24:</span> A second clip. The ego car holds one position across the samples. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/uncertainty_03.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 25:</span> A third clip. The spread grows for cars outside the camera view. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/uncertainty_04.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 26:</span> A fourth clip. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/uncertainty_05.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 27:</span> A fifth clip. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+          <figure class="item">
+            <video src="assets/uncertainty_06.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 28:</span> A sixth clip. <span class="ref">Fig. 5</span></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="novel">
+        <div class="sec-head">
+          <span class="num">5</span>
+          <div>
+            <h2>Novel actions</h2>
+            <p class="chips"><span class="chip">App. F.1</span><span class="chip">App. E.3</span><span class="chip">Sec. 4.3</span></p>
+          </div>
+        </div>
+        <p class="blurb">MAGNET and HOVER are two new actions. The Rocket Science recordings contain neither. RoLeSynth adds them as short plug-in rules, as two new actions beside the 19 binary actions of Rocket Science. MAGNET pulls the ball toward the car for 1 s. HOVER holds the car at a fixed altitude for a few seconds. A new ability takes three small files in RoLeSynth, against 11 to 12 files in RocketSim. In each clip the generated video is on the left and the state view is on the right. Read the state view like this. Each car is a triangle pointing the way it faces, blue for one team and orange for the other. The ball is the white circle. A purple ring around a car means one of its ability fields is active, so a ringed car is using MAGNET or HOVER at that moment. The panel on the far right lists each car, its boost level, and its ability fields in purple, for example IS_USING_MAGNET, MAGNET_COOLDOWN and MAGNET_TIME. The strip along the bottom is a side view of the arena, which is where HOVER is easiest to see.</p>
+        <div class="grid">
+          <figure class="item wide">
+            <video src="assets/novel_01.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 29:</span> MAGNET. Two cars pull the ball toward themselves. Watch for the purple ring and the white ball tracking a car.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/novel_02.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 30:</span> MAGNET in a second match.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/novel_03.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 31:</span> HOVER. Two cars hold a fixed altitude. The side strip at the bottom shows them off the floor.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/novel_04.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 32:</span> HOVER in a second match.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/novel_05.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 33:</span> A control. SynthZoo play, drawn the same way, with no ability rings.</figcaption>
+          </figure>
+          <figure class="item wide">
+            <video src="assets/novel_06.mp4" controls loop muted playsinline preload="metadata"></video>
+            <figcaption><span class="lab">Figure 34:</span> A second control, from the SynthRoSc profile.</figcaption>
+          </figure>
+        </div>
+      </section>
+  </div>
+<script>
+document.querySelectorAll('.cmp').forEach(function (cmp) {
+  var base = cmp.querySelector('.base'), over = cmp.querySelector('.over'), dragging = false;
+
+  function setX(clientX) {
+    var r = cmp.getBoundingClientRect();
+    var pct = Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100));
+    cmp.style.setProperty('--x', pct + '%');
+  }
+  cmp.addEventListener('pointerdown', function (e) {
+    dragging = true; cmp.setPointerCapture(e.pointerId); setX(e.clientX);
+  });
+  cmp.addEventListener('pointermove', function (e) { if (dragging) setX(e.clientX); });
+  cmp.addEventListener('pointerup', function (e) { dragging = false; cmp.releasePointerCapture(e.pointerId); });
+
+  // The two sides must stay on the same frame, or the divider compares two moments. Each
+  // video loops on its own clock, so they drift apart and a loop wrap puts them seconds
+  // apart. `timeupdate` fires about four times a second, which is far too coarse to catch
+  // either. Check every displayed frame instead, and correct rather than assume.
+  function tick() {
+    if (!base.paused && over.readyState > 1) {
+      if (Math.abs(over.currentTime - base.currentTime) > 0.05) {
+        over.currentTime = base.currentTime;
+      }
+      // The overlay does not loop, so it ends where the base wraps. Restart it against the
+      // base's clock rather than giving it a loop of its own to drift on.
+      if (over.paused) over.play();
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  cmp.addEventListener('click', function () {
+    if (base.paused) { over.currentTime = base.currentTime; base.play(); over.play(); }
+    else { base.pause(); over.pause(); }
+  });
+
+  // Start both only once enough of each is buffered, so they begin on the same frame.
+  var ready = 0;
+  [base, over].forEach(function (v) {
+    v.addEventListener('loadeddata', function () {
+      if (++ready === 2) { over.currentTime = base.currentTime; base.play(); over.play(); }
+    });
+  });
+});
+</script>
+</body>
+</html>

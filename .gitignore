@@ -1,0 +1,4 @@
+# Nothing but the published site belongs here. The build script lives outside this
+# repository on purpose: it has to name the machine paths the videos came from, and this
+# tree is the one that becomes a public web page.
+*.py
